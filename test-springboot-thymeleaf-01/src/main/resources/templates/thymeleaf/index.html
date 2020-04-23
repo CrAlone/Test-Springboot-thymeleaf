@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>变量表达式</title>
+</head>
+<body>
+<!--text不会解析标签-->
+<p th:text="${name}">name</p>
+<!--utext会解析标签-->
+<p th:utext="${name}">name</p>
+<!--如果是个对象也可以这样<p th:text="${p.name}">name</p>-->
+<!--<p th:text="${p.age}">age</p>-->
+<!--<p th:text="${p.sex}">sex</p>-->
+<!--跳转-->
+<a href="/welcome" th:href="@{/welcome}">跳转页面</a>
+<!--消息表达式 读取配置文件的信息 something是key 输出对应的value值-->
+<p th:text= "#{something}">message</p>
+<!--片段表达式-->
+<!--引入foot文件内容-->
+<!--insert插入型 p是引入文件的标签及内容 直接插入到div中-->
+<div th:insert="p::copy"></div>
+<!--replace 替换 直接将div替换成赋值的标签及内容-->
+<div th:replace="p::copy"></div>
+<!--include 值要引入标签中的内容-->
+<div th:include="p::copy"></div>
+</body>
+</html>

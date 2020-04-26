@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查询页面</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>职称</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="guest:${guests}">
+               <td th:text="${guest.name}" id="name" name="name">name</td>
+               <td th:text="${guest.title}" id="title" name="title">title</td>
+                <td>
+                    <a th:href="@{/guest/toUpdate(name=${guest.name})}">修改</a>
+                </td>
+                <td>
+                    <a th:href="@{/guest/delete(name=${guest.name})}">删除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a href="/toAdd" th:href="@{/guest/toAdd}">添加</a>
+</body>
+</html>
